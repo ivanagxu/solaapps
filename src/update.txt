@@ -1,0 +1,3 @@
+2012-06-21
+Source code is moved to GitHub with repository 
+git@github.com:ivanagxu/solaapps.git via ssh
