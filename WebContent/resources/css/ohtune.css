@@ -1,0 +1,15 @@
+a {
+    text-decoration: none;
+    color: #000FFF;
+    font-size: 20px;
+}
+
+.red-row {
+        border-color : red !important; color : Red !important;
+}
+
+.green-row {
+        border-color : green !important; color : Green !important;
+}
+
+.task-icon { background-image: url(../images/task.png); }

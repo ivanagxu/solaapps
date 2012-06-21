@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>project</display-name>
+	<servlet>
+		<servlet-name>CustomerController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.CustomerController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CustomerController</servlet-name>
+		<url-pattern>/CustomerController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DepartmentController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.DepartmentController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DepartmentController</servlet-name>
+		<url-pattern>/DepartmentController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DivisionController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.DivisionController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DivisionController</servlet-name>
+		<url-pattern>/DivisionController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DocumentController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.DocumentController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DocumentController</servlet-name>
+		<url-pattern>/DocumentController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>JobController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.JobController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JobController</servlet-name>
+		<url-pattern>/JobController</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+		<servlet-name>JobTypeController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.JobTypeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JobTypeController</servlet-name>
+		<url-pattern>/JobTypeController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MoldController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.MoldController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MoldController</servlet-name>
+		<url-pattern>/MoldController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>OrderController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.OrderController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OrderController</servlet-name>
+		<url-pattern>/OrderController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>PostController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.PostController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostController</servlet-name>
+		<url-pattern>/PostController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ProductController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.ProductController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProductController</servlet-name>
+		<url-pattern>/ProductController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ReportController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.ReportController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReportController</servlet-name>
+		<url-pattern>/ReportController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RoleController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.RoleController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RoleController</servlet-name>
+		<url-pattern>/RoleController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SectionController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.SectionController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SectionController</servlet-name>
+		<url-pattern>/SectionController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UserACController</servlet-name>
+		<servlet-class>tk.solaapps.ohtune.controller.UserACController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserACController</servlet-name>
+		<url-pattern>/UserACController</url-pattern>
+	</servlet-mapping>
+    
+  <welcome-file-list>
+  	<welcome-file>login.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- Session Factory -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    	<property name="url" value="jdbc:mysql://localhost:3306/servicedb?useUnicode=true&amp;characterEncoding=utf8"/>
+    	<property name="username" value="root"/>
+    	<property name="password" value="password"/>
+  	</bean>
+	
+	<bean id="sessionFactory"	class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+	    <property name="annotatedClasses">
+			<list>
+				<value>tk.solaapps.ohtune.model.UserAC</value>
+				<value>tk.solaapps.ohtune.model.Dummy</value>
+				<value>tk.solaapps.ohtune.model.Sequence</value>
+				<value>tk.solaapps.ohtune.model.Department</value>
+				<value>tk.solaapps.ohtune.model.Division</value>
+				<value>tk.solaapps.ohtune.model.Section</value>
+				<value>tk.solaapps.ohtune.model.Role</value>
+				<value>tk.solaapps.ohtune.model.Post</value>
+				<value>tk.solaapps.ohtune.model.Order</value>
+				<value>tk.solaapps.ohtune.model.Product</value>
+				<value>tk.solaapps.ohtune.model.JobType</value>
+				<value>tk.solaapps.ohtune.model.Job</value>
+				<value>tk.solaapps.ohtune.model.Customer</value>
+				<value>tk.solaapps.ohtune.model.Mold</value>
+				<value>tk.solaapps.ohtune.model.ProductLog</value>
+			</list>
+		</property>
+	    <property name="hibernateProperties">
+	      <value>
+	        hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+	        hibernate.show_sql=true
+	      </value>
+	    </property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+	<aop:config>
+		<aop:pointcut id="ohtuneDA"
+			expression="execution(* tk.solaapps.ohtune.service.OhtuneDA.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="ohtuneDA" />
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="ohtuneServiceMethods"
+			expression="execution(* tk.solaapps.ohtune.service.OhtuneService.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="ohtuneServiceMethods" />
+	</aop:config>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" />
+			<!-- <tx:method name="*" propagation="SUPPORTS" read-only="true" />  -->
+		</tx:attributes>
+	</tx:advice>
+
+ 
+ 	<!-- DAO -->
+ 	<bean id="userACDao" class="tk.solaapps.ohtune.dao.UserACDaoImpl">
+    	<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="dummyDao" class="tk.solaapps.ohtune.dao.DummyDaoImpl">
+    	<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="seqDao" class="tk.solaapps.ohtune.dao.SequenceDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="deptDao" class="tk.solaapps.ohtune.dao.DepartmentDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="divDao" class="tk.solaapps.ohtune.dao.DivisionDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="secDao" class="tk.solaapps.ohtune.dao.SectionDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="roleDao" class="tk.solaapps.ohtune.dao.RoleDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="postDao" class="tk.solaapps.ohtune.dao.PostDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="orderDao" class="tk.solaapps.ohtune.dao.OrderDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="productDao" class="tk.solaapps.ohtune.dao.ProductDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="jobTypeDao" class="tk.solaapps.ohtune.dao.JobTypeDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="jobDao" class="tk.solaapps.ohtune.dao.JobDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="customerDao" class="tk.solaapps.ohtune.dao.CustomerDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="moldDao" class="tk.solaapps.ohtune.dao.MoldDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<bean id="productLogDao" class="tk.solaapps.ohtune.dao.ProductLogDaoImpl">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	
+  	<!-- Service -->
+  	<bean id="systemConfig" class="tk.solaapps.ohtune.pattern.SystemConfig">
+  		<!-- 
+  		<property name="productImageFolder" value="/Users/ivanagxu/Documents/workspace/data/ohtune/product_image" />
+  		<property name="productDrawingFolder" value = "/Users/ivanagxu/Documents/workspace/data/ohtune/product_drawing" />
+  		<property name="commonDocumentFolder" value = "/Users/ivanagxu/Documents/workspace/data/ohtune/doc"/>
+  		-->
+  		<property name="productImageFolder" value="D:/service/product_image" />
+  		<property name="productDrawingFolder" value = "D:/service/product_drawing" />
+  		<property name="commonDocumentFolder" value = "D:/service/doc"/>
+  	</bean>
+  	
+	<bean id="uhtuneService" class="tk.solaapps.ohtune.service.OhtuneService">
+		<property name="systemConfig" ref="systemConfig" />
+		<property name="userACDao" ref="userACDao" />
+		<property name="dummyDao" ref="dummyDao" />
+		<property name="sequenceDao" ref="seqDao"/>
+		<property name="departmentDao" ref="deptDao"/>
+		<property name="divisionDao" ref="divDao"/>
+		<property name="sectionDao" ref="secDao"/>
+		<property name="roleDao" ref="roleDao"/>
+		<property name="postDao" ref="postDao"/>
+		<property name="orderDao" ref="orderDao"/>
+		<property name="productDao" ref="productDao"/>
+		<property name="jobTypeDao" ref="jobTypeDao"/>
+		<property name="jobDao" ref="jobDao"/>
+		<property name="customerDao" ref="customerDao"/>
+		<property name="moldDao" ref="moldDao"/>
+		<property name="productLogDao" ref="productLogDao"/>
+	</bean>
+</beans>
