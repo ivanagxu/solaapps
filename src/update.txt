@@ -2,4 +2,4 @@
 Source code is moved to GitHub with repository 
 git@github.com:ivanagxu/solaapps.git via ssh
 
-2012-06-21
+2012-06-21 Ivan
