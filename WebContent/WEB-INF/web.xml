@@ -46,7 +46,7 @@
 		<url-pattern>/JobController</url-pattern>
 	</servlet-mapping>
     
-    <servlet>
+    	<servlet>
 		<servlet-name>JobTypeController</servlet-name>
 		<servlet-class>tk.solaapps.ohtune.controller.JobTypeController</servlet-class>
 	</servlet>
@@ -128,7 +128,7 @@
 	</servlet-mapping>
     
   <welcome-file-list>
-  	<welcome-file>login.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
